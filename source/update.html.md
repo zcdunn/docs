@@ -10,7 +10,9 @@ To update your instance, run these commands with `plume` user if you created it,
 ```bash
 git pull origin master
 cargo web deploy -p plume-front
-cargo install --force && cargo install --path plume-cli --force
+# Rebuild the backend and CLI
+# Replace DATABASE with either postgres or sqlite, depending on the choice you made on installation
+cargo install --force && cargo install --no-default-features --features DATABASE --path plume-cli --force
 
 # Run the migrations
 diesel migration run
